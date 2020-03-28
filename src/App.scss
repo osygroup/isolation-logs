@@ -1,0 +1,13 @@
+@mixin fontFace($family, $weight, $fileName, $style: normal) {
+  @font-face {
+    font-family: $family;
+    font-style: $style;
+    font-weight: $weight;
+    font-display: block;
+    src: url('shared/fonts/#{$fileName}.eot?#iefix') format('embedded-opentype'), url('shared/fonts/#{$fileName}.woff') format('woff'), url('shared/fonts/#{$fileName}.ttf') format('truetype');
+  }
+}
+
+@include fontFace(Tungsten Rounded, 300, TungstenRounded-Light);
+@include fontFace(Tungsten Rounded, 400, TungstenRounded-Medium);
+@include fontFace(Tungsten Rounded, 500, TungstenRounded-Book);
