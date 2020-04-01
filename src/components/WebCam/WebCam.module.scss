@@ -37,7 +37,7 @@
   height: 80vh;
   opacity: 0.6;
 
-  span {
+  & > span {
     position: relative;
     border: thin solid rgba(255, 255, 255, 0.1);
     border-bottom: none;

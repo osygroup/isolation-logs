@@ -15,18 +15,23 @@ const RandomTexts = ({ length }) => {
   const [value, setValue] = useState(getRandomText(length));
 
   useEffect(() => {
+    setValue(getRandomText(length));
     setInterval(() => {
-      setValue(getRandomText(length))
+      setValue(getRandomText(length));
     }, 300);
   }, [length])
 
   return (
-    <>{value}</>
+    <span>{value}</span>
   )
 }
 
+RandomTexts.defaultProps = {
+  length: 4
+}
+
 RandomTexts.propTypes = {
-  length: PropTypes.number.isRequired
+  length: PropTypes.number
 }
 
 export default RandomTexts;

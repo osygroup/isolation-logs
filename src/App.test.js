@@ -1,9 +1,20 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { mount } from 'enzyme';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+let component;
+let container;
+
+const mountComponent = (props) => mount(<App />);
+const mainElement = () => component.find("main");
+
+describe('<RandomTexts />', () => {
+  beforeAll(() => {
+    component = mountComponent();
+    container = mainElement();
+  });
+
+  it('should render text conatiner', () => {
+    expect(container.exists()).toBe(true);
+  });
 });

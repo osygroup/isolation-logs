@@ -5,10 +5,10 @@ import './App.scss';
 
 function App() {
   return (
-    <>
+    <main>
       <WebCam />
       <IsolationDetails />
-    </>
+    </main>
   );
 }
 

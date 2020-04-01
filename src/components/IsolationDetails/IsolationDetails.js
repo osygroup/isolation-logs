@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { 
+import {
   isolationDetails,
   transmission,
   recording,
@@ -16,14 +16,9 @@ import {
 import MDSIcon from '../../vectors/MDSIcon';
 import ProfileLines from '../../vectors/ProfileLines';
 
+import { getCurrentDate } from '../../shared/utils'
+
 const IsolationDetails = () => {
-  const today = new Date();
-  const dd = today.getDate();
-  const mm = today.getMonth() + 1; 
-  const yyyy = today.getFullYear();
-
-  const formatedDate = `${yyyy}/${mm < 10 ? '0' : ''}${mm}/${dd < 10 ? '0' : ''}${dd}`;
-
   return (
     <div className={isolationDetails}>
       <div>
@@ -64,7 +59,7 @@ const IsolationDetails = () => {
           </div>
           <div>
             <div>COVID-19 ISOLATION</div>
-            <div>DATE: {formatedDate}</div>
+            <div>DATE: <time>{getCurrentDate()}</time></div>
           </div>
           <div>
             <div>SQUAD UNIT 7:</div>
