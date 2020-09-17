@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: ratgit 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ratgit
+  template:
+    metadata:
+      labels:
+        app: ratgit 
+    spec:
+      containers:
+        - name: ratgit 
+          image: skyk8sacr.azurecr.io/ratgit
+          ports:
+          - containerPort: 8080
