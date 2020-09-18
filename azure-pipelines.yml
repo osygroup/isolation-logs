@@ -19,9 +19,10 @@ variables:
   imagePullSecret: 'skyk8sacr7a42-auth'
 
   # Agent VM image name
-  name: SelfHostedAgentPool
-  demands:
-   - agent.name -equals mydockeragent
+  pool:
+    name: SelfHostedAgentPool
+    demands:
+     - agent.name -equals mydockeragent
   
   # Name of the new namespace being created to deploy the PR changes.
   k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
