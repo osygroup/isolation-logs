@@ -5,10 +5,6 @@
 trigger:
 - master
 
-pool:
-  name: SelfHostedAzureAgentPool
-  demands:
-   - agent.name -equals mydockeragent
 resources:
 - repo: self
 
@@ -23,6 +19,7 @@ variables:
   imagePullSecret: 'skyk8sacr7a42-auth'
 
   # Agent VM image name
+  
   
   # Name of the new namespace being created to deploy the PR changes.
   k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
