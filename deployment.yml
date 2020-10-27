@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: mycicd 
-          image: osygroup/craze:$BUILD_NUMBER
+          image: osygroup/craze:83
           ports:
           - containerPort: 80
 
