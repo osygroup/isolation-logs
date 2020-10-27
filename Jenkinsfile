@@ -38,7 +38,7 @@ pipeline {
 		}
 		stage('Apply Kubernetes files') {
 			steps{
-				withKubeConfig([credentialsId: 'jenkinsrobot']) {
+				withKubeConfig([credentialsId: 'jenkinsrobot', serverUrl: 'https://k8stest-dns-0511e907.hcp.centralus.azmk8s.io/:443']) {
 				sh 'kubectl get pods'
 				sh 'kubectl apply -f deployment.yml'
 			}
