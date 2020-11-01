@@ -1,35 +1,35 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: mycicd 
+  name: ferrari 
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: mycicd
+      app: ferrari
   template:
     metadata:
       labels:
-        app: mycicd
+        app: ferrari
     spec:
       containers:
-        - name: mycicd 
-          image: osygroup/craze:83
+        - name: ferrari 
+          image: osygroup/craze:latest
           ports:
           - containerPort: 80
 
 
 
-
 ---
+
 
 apiVersion: v1
 kind: Service
 metadata:
-    name: mycicd
+  name: ferrari-service
 spec:
-    type: LoadBalancer
-    ports:
-    - port: 80 
-    selector:
-        app: mycicd
+  type: NodePort
+  selector:
+    app: ferrari
+  ports:
+    - port: 80
