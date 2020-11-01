@@ -26,19 +26,10 @@ pipeline {
         }
       }
     }
-		stage('Deploy to AKS'){
-			steps{
-				withCredentials([azureServicePrincipal('k8stestSP')]) {
-				sh 'echo "logging in" '
-				sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
-				sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
-				sh 'az aks get-credentials -g k8stest -n k8stest'
-				}
-			}
-		}
+
 		stage('Apply Kubernetes files') {
 			steps{
-				withKubeConfig([credentialsId: 'jenkinsrobot', serverUrl: 'https://k8stest-dns-0511e907.hcp.centralus.azmk8s.io:443']) {
+				withKubeConfig([credentialsId: 'master-sa', serverUrl: 'https://40.87.28.95:6443']) {
 				sh 'kubectl apply -f deployment.yml'
 			}
 		}
