@@ -7,7 +7,7 @@ pipeline {
 	stages {
 		stage('Cloning Git') {
 			steps {
-				git 'https://github.com/osygroup/isolation-logs'
+				git 'https://github.com/osygroup/isolation-logs/ferrari'
 				}
 			}	
 		stage('Building image') {
