@@ -7,13 +7,13 @@ pipeline {
 	stages {
 		stage('Cloning Git') {
 			steps {
-				git 'https://github.com/osygroup/isolation-logs'
+				git 'https://github.com/osygroup/isolation-logs/tree/ferrari'
 				}
 			}	
 		stage('Building image') {
 			steps{
 				script {
-					dockerImage = docker.build registry + ":$BUILD_NUMBER"
+					dockerImage = docker.build registry + ":latest"
         }
       }
     }
