@@ -13,7 +13,7 @@ pipeline {
 		stage('Building image') {
 			steps{
 				script {
-					dockerImage = docker.build registry + ":$BUILD_NUMBER"
+					dockerImage = docker.build registry + ":latest"
         }
       }
     }
@@ -26,19 +26,10 @@ pipeline {
         }
       }
     }
-		stage('Deploy to AKS'){
-			steps{
-				withCredentials([azureServicePrincipal('k8stestSP')]) {
-				sh 'echo "logging in" '
-				sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
-				sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
-				sh 'az aks get-credentials -g k8stest -n k8stest'
-				}
-			}
-		}
+
 		stage('Apply Kubernetes files') {
 			steps{
-				withKubeConfig([credentialsId: 'jenkinsrobot', serverUrl: 'https://k8stest-dns-0511e907.hcp.centralus.azmk8s.io:443']) {
+				withKubeConfig([credentialsId: 'jenkinsrobot', serverUrl: 'https://mercy-dns-9e8ee0c0.hcp.westus2.azmk8s.io:443']) {
 				sh 'kubectl apply -f deployment.yml'
 			}
 		}
