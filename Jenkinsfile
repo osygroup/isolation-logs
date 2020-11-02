@@ -29,7 +29,7 @@ pipeline {
 
 		stage('Apply Kubernetes files') {
 			steps{
-				withKubeConfig([credentialsId: 'jenkinsrobot', serverUrl: 'https://mercy-dns-9e8ee0c0.hcp.westus2.azmk8s.io:443']) {
+				withKubeConfig([credentialsId: 'mercy-sa', serverUrl: 'https://mercy-dns-9e8ee0c0.hcp.westus2.azmk8s.io:443']) {
 				sh 'kubectl apply -f deployment.yml'
 			}
 		}
