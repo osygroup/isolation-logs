@@ -7,7 +7,7 @@ pipeline {
 	stages {
 		stage('Cloning Git') {
 			steps {
-				git branch: 'dockerhubAKS', url: 'https://github.com/osygroup/isolation-logsz'
+				git branch: 'dockerhubAKS', url: 'https://github.com/osygroup/isolation-logs'
 				}
 			}	
 		stage('Building image') {
