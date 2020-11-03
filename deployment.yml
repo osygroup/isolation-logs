@@ -28,7 +28,7 @@ kind: Service
 metadata:
     name: raks-service
 spec:
-    type: NodePort
+    type: LoadBalancer
     ports:
     - port: 80 
     selector:
